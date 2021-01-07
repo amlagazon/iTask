@@ -87,12 +87,12 @@ class TaskList extends Binder {
                   <tr>
                     <th>Name</th>
                     <th>Last modified</th>
-                    <th></th>
+                    <th>Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   {taskListItems.map((task, i) =>
-                    <AdminTaskListItem key={task._id + i} task={task} />
+                    <AdminTaskListItem key={task._id + i} task={task}/>
                   )}
                 </tbody>
               </table>
