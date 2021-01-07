@@ -16,6 +16,7 @@ module.exports = function(config) {
   // any other initial model calls
   User.createDefaults();
   Flow.createDefaults();
+  Note.createDefaults();
 };
 
 // Yote models are defined below

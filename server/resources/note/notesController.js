@@ -59,12 +59,12 @@ exports.listByValues = (req, res) => {
     res.send({success: false, message: `Missing query param(s) specified by the ref: ${req.params.refKey}`});
   } else {
     Note.find({[req.params.refKey]: {$in: [].concat(req.query[req.params.refKey]) }}, (err, notes) => {
-        if(err || !notes) {
-          res.send({success: false, message: `Error querying for notes by ${[req.params.refKey]} list`, err});
-        } else  {
-          res.send({success: true, notes});
-        }
-    })
+      if(err || !notes) {
+        res.send({success: false, message: `Error querying for notes by ${[req.params.refKey]} list`, err});
+      } else  {
+        res.send({success: true, notes});
+      }
+  })
   }
 }
 
@@ -88,7 +88,7 @@ exports.listByRefs = (req, res) => {
         query[nextParams.split("/")[i]] = nextParams.split("/")[i+1] === 'null' ? null : nextParams.split("/")[i+1]
       }
     }
-    Note.find(query, (err, notes) => {
+    Note.find(query).populate("_user").exec((err, notes) => {
       if(err || !notes) {
         res.send({success: false, message: `Error retrieving notes by ${req.params.refKey}: ${req.params.refId}`});
       } else {

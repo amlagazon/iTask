@@ -21,6 +21,7 @@ import Binder from '../../../global/components/Binder.js.jsx';
 // import resource components
 import FlowLayout from '../components/FlowLayout.js.jsx';
 import TaskForm from '../../task/components/TaskForm.js.jsx';
+import TaskListItem from '../../task/components/TaskListItem.js.jsx';
 
 class SingleFlow extends Binder {
   constructor(props) {
@@ -154,8 +155,7 @@ class SingleFlow extends Binder {
                 <ul>
                   {taskListItems.map((task, i) =>
                     <li key={task._id + i}>
-                      <h3>{task.name}</h3>
-                      <p>{task.description}</p>
+                      <TaskListItem task={task}/>
                     </li>
                   )}
                 </ul>
